@@ -1,9 +1,18 @@
-import React from 'react';
-import { render } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+
+describe.skip('Methods', () => {
+  describe('addLaps()', () => {
+    test('increments by one', () => {
+    
+    });
+  });
+});
+
+describe('Functionality', () => {
+  describe('"Add Lap" when clicked increments lap count', () => {
+    test('changes "Current Laps: 0" to "Current Laps: 1"', () => {
+      expect(jest).toBeTrue()
+    });
+  });
 });
