@@ -54,8 +54,14 @@ class LapCounter extends React.Component {
   }
 }
 
+/**
+ * TODO: Test by exporting this Component.
+ * @param props
+ * @returns {JSX.Element}
+ * @constructor
+ */
 function SavedLaps(props)  {
-    let listLaps = props.lapArray.map((lap) => 
+    let listLaps = props.lapArray.map((lap) =>
     <li>{lap}</li>);
     return(
       <div>
