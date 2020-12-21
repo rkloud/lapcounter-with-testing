@@ -1,6 +1,7 @@
 import React from 'react'
 import App from './App'
 import { shallow } from 'enzyme'
+import { render } from '@testing-library/react';
 
 describe('Methods', () => {
   describe('addLaps()', () => {
@@ -14,11 +15,17 @@ describe('Methods', () => {
   });
 });
 
-/**
- * Here to demonstrate the difference in testing with Testing Library with the different in ideology
- */
-describe('Rendering', () => {
+describe('Renders', () => {
+  describe('buttons', () => {
+    test('"Add Lap" button', () => {
+      const { getByText } = render(<App />);
+      const addButton = getByText("Add Lap");
+      expect(addButton).toBeInTheDocument();
+    });
+  })
   describe('"Add Lap" when clicked increments lap count', () => {
+    // Here to demonstrate the difference in testing with Testing Library with the different in ideology
+    // TODO: Convert to Testing Library
     test('changes "Current Laps: 0" to "Current Laps: 1"', () => {
       const wrapper = shallow(<App/>)
       expect(wrapper.text()).toContain('Current Laps: 0')
