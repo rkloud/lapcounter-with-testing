@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import SavedLaps from './components/SavedLaps'
 
 
 class LapCounter extends React.Component {
@@ -54,17 +55,6 @@ class LapCounter extends React.Component {
   }
 }
 
-function SavedLaps(props)  {
-    let listLaps = props.lapArray.map((lap) => 
-    <li>{lap}</li>);
-    return(
-      <div>
-        <h3>Previous Laps</h3>
-        <ul>{listLaps}</ul>
-      </div>
-    )
-
-}
 
 
 
