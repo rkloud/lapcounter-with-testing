@@ -13,6 +13,42 @@ describe('Methods', () => {
       expect(instance).toHaveProperty('state.lapCount', 1)
     });
   });
+  describe('decreaseLaps()', () => {
+    test('does not decrease state count lower than zero', () => {
+      const wrapper = shallow(<App/>)
+      const instance = wrapper.instance()
+      expect(instance).toHaveProperty('state.lapCount', 0)
+      instance.decreaseLaps()
+      expect(instance).toHaveProperty('state.lapCount', 0)
+    });
+    test('decreases lap by one', () => {
+      const wrapper = shallow(<App/>)
+      const instance = wrapper.instance()
+      instance.state.lapCount = 1;
+      expect(instance).toHaveProperty('state.lapCount', 1)
+      instance.decreaseLaps()
+      expect(instance).toHaveProperty('state.lapCount', 0)
+    })
+  });
+  describe('resetLaps()', () => {
+    test('sets lap count to 0', () => {
+      const wrapper = shallow(<App/>)
+      const instance = wrapper.instance()
+      instance.state.lapCount = 1;
+      expect(instance).toHaveProperty('state.lapCount', 1)
+      instance.resetLaps()
+      expect(instance).toHaveProperty('state.lapCount', 0)
+    });
+  })
+  describe('saveLaps()', () => {
+    test('it saves previous laps', () => {
+      const wrapper = shallow(<App/>)
+      const instance = wrapper.instance()
+      expect(instance).toHaveProperty('state.lapArray', [])
+      instance.saveLaps()
+      expect(instance).toHaveProperty('state.lapArray', [0])
+    })
+  })
 });
 
 describe('Renders', () => {
