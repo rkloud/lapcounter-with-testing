@@ -1,10 +1,15 @@
 import React from 'react'
 import Component from './index'
-import { render, getAllByRole } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 describe('Renders', () => {
   test('displays an empty list of laps', () => {
-    const { getAllBy } = render(<Component lapArray={[]}/>)
-    expect(getAllBy("ul")).toHaveLength(0)
+    render(<Component lapArray={[]}/>)
+    expect(screen.queryAllByRole("listitem")).toHaveLength(0)
+  });
+  test('displays a list of laps', () => {
+    render(<Component lapArray={[1,2,3,4]}/>)
+    expect(screen.queryAllByRole("listitem")).toHaveLength(4)
+
   });
 });
